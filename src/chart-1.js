@@ -71,13 +71,13 @@ function ready(json) {
     .attr('y', -radiusScale(1))
     .attr('text-anchor', 'middle')
 
+  // spinning the satelite
   d3.select('#chart-1-click').on('click', () => {
     d3.transition()
       .duration(5000)
       .ease(d3.easeElastic)
       .tween('spin', () => {
         return function(t) {
-          console.log(t)
           d3.select('.satelite').attr('transform', () => {
             let degrees = (angleScale(t) / Math.PI) * 180
             return `rotate(${degrees})`
