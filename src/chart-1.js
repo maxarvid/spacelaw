@@ -60,12 +60,12 @@ function ready(json) {
     .attr('stroke', 'black')
     .attr('stroke-width', 0.1)
 
-  // adding a satelite
+  // adding a satellite
   svg
     .append('g')
     .attr('transform', `translate(${width / 2}, ${height / 2})`)
     .append('text')
-    .classed('satelite', true)
+    .classed('satellite', true)
     .text('🛰')
     .attr('x', 0)
     .attr('y', -radiusScale(1))
