@@ -46,6 +46,16 @@ function ready(datapoints) {
     .attr('height', yPositionScale.bandwidth())
     .attr('fill', 'lightgrey')
 
+  // add title
+  svg
+    .append('text')
+    .text('number of national space laws on the books')
+    .attr('x', width / 2)
+    .attr('y', 0)
+    .attr('alignment-baseline', 'ideographic')
+    .attr('text-anchor', 'middle')
+    .attr('font-size', '20')
+
   // axes
   const xAxis = d3.axisBottom(xPositionScale)
   svg
