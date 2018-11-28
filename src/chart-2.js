@@ -1,6 +1,6 @@
 import * as d3 from 'd3'
 
-let margin = { top: 50, left: 50, right: 50, bottom: 50 }
+let margin = { top: 50, left: 80, right: 50, bottom: 50 }
 
 let height = 600 - margin.top - margin.bottom
 let width = 600 - margin.left - margin.right
@@ -15,7 +15,10 @@ let svg = d3
 
 let xPositionScale = d3.scaleLinear().range([0, width])
 
-let yPositionScale = d3.scaleBand().range([height, 0])
+let yPositionScale = d3
+  .scaleBand()
+  .range([0, height])
+  .padding(0.1)
 
 d3.csv(require('./data/national_law_count.csv'))
   .then(ready)
@@ -30,7 +33,7 @@ function ready(datapoints) {
   let countryList = datapoints.map(d => d.country)
   yPositionScale.domain(countryList)
 
-  // fix this later tonight.
+  // draw the bar chart
   svg
     .selectAll('.bars')
     .data(datapoints)
@@ -39,7 +42,21 @@ function ready(datapoints) {
     .classed('bars', true)
     .attr('x', 0)
     .attr('y', d => yPositionScale(d.country))
-    .attr('width', 40)
-    .attr('height', yPositionScale.scaleBand())
-    .attr('fill', 'black')
+    .attr('width', d => xPositionScale(d.count))
+    .attr('height', yPositionScale.bandwidth())
+    .attr('fill', 'lightgrey')
+
+  // axes
+  const xAxis = d3.axisBottom(xPositionScale)
+  svg
+    .append('g')
+    .attr('class', 'axis x-axis')
+    .attr('transform', `translate(0, ${height})`)
+    .call(xAxis)
+
+  const yAxis = d3.axisLeft(yPositionScale)
+  svg
+    .append('g')
+    .attr('class', 'axis y-axis')
+    .call(yAxis)
 }
