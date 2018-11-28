@@ -78,7 +78,7 @@ function ready(json) {
       .ease(d3.easeElastic)
       .tween('spin', () => {
         return function(t) {
-          d3.select('.satelite').attr('transform', () => {
+          d3.select('.satellite').attr('transform', () => {
             let degrees = (angleScale(t) / Math.PI) * 180
             return `rotate(${degrees})`
           })
