@@ -29,6 +29,9 @@ svg
 let projection = d3.geoNaturalEarth1()
 let path = d3.geoPath().projection(projection)
 
+// This is a function that determines if a point is in a polygon
+var classifyPoint = require('robust-point-in-polygon')
+
 Promise.all([
   d3.csv(require('./data/national_law_count.csv')),
   d3.json(require('./data/world.topojson'))
@@ -54,4 +57,58 @@ function ready([datapoints, json]) {
     .attr('stroke', 'black')
     .attr('stroke-width', 0.1)
 
+  // add the guessing satellite
+  svg
+    .append('text')
+    .classed('satellite-guess', true)
+    .text('🛰')
+    .attr('x', 20)
+    .attr('y', 20)
+    .attr('text-anchor', 'middle')
+
+  // add drag functionality to guessing satellite
+  var drag = d3
+    .drag()
+    .on('start', function() {
+      console.log('start drag')
+      d3.select(this)
+        .style('cursor', 'pointer')
+        .style('font-size', '24px')
+        .raise()
+    })
+    .on('drag', function() {
+      console.log('dragging!')
+      let [mouseX, mouseY] = d3.mouse(this)
+      console.log(mouseX, mouseY)
+      d3.select(this)
+        .style('cursor', 'none')
+        .attr('x', mouseX)
+        .attr('y', mouseY)
+    })
+    .on('end', function() {
+      console.log('end drag')
+      d3.select(this).style('font-size', '18px')
+      // turning pixel coords to lat long
+      let [mouseX, mouseY] = projection.invert(d3.mouse(this))
+      // console.log('guess coords are ', mouseX, mouseY)
+      countries.features.forEach(d => {
+        // there are some weird nulls in the data
+        if (d.geometry && d.geometry.type === 'Polygon') {
+          console.log(d.properties.name)
+          // console.log(d.geometry)
+          d.geometry.coordinates.forEach(d => {
+            // console.log('coords are ', d)
+            console.log('in polygon? ', classifyPoint(d, [mouseX, mouseY]))
+          })
+        } else if (d.geometry && d.geometry.type === 'MultiPolygon') {
+          console.log('HELLO', d.properties.name)
+          console.log(d.geometry.coordinates)
+          d.geometry.coordinates.forEach(d => {
+            console.log(d)
+            //console.log('in multipolygon', classifyPoint(d, [mouseX, mouseY]))
+          })
+        }
+      })
+    })
+  svg.select('.satellite-guess').call(drag)
 }
