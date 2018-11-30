@@ -70,14 +70,12 @@ function ready([datapoints, json]) {
   var drag = d3
     .drag()
     .on('start', function() {
-      console.log('start drag')
       d3.select(this)
         .style('cursor', 'pointer')
         .style('font-size', '24px')
         .raise()
     })
     .on('drag', function() {
-      console.log('dragging!')
       let [mouseX, mouseY] = d3.mouse(this)
       console.log(mouseX, mouseY)
       d3.select(this)
@@ -86,26 +84,27 @@ function ready([datapoints, json]) {
         .attr('y', mouseY)
     })
     .on('end', function() {
-      console.log('end drag')
       d3.select(this).style('font-size', '18px')
       // turning pixel coords to lat long
       let [mouseX, mouseY] = projection.invert(d3.mouse(this))
-      // console.log('guess coords are ', mouseX, mouseY)
-      countries.features.forEach(d => {
+
+      // iterating through each country
+      countries.features.forEach(country => {
         // there are some weird nulls in the data
-        if (d.geometry && d.geometry.type === 'Polygon') {
-          console.log(d.properties.name)
-          // console.log(d.geometry)
-          d.geometry.coordinates.forEach(d => {
-            // console.log('coords are ', d)
-            console.log('in polygon? ', classifyPoint(d, [mouseX, mouseY]))
+        if (country.geometry && country.geometry.type === 'Polygon') {
+          country.geometry.coordinates.forEach(d => {
+            if (classifyPoint(d, [mouseX, mouseY]) < 0) {
+              console.log('you guessed ', country.properties.name)
+            }
           })
-        } else if (d.geometry && d.geometry.type === 'MultiPolygon') {
-          console.log('HELLO', d.properties.name)
-          console.log(d.geometry.coordinates)
-          d.geometry.coordinates.forEach(d => {
-            console.log(d)
-            //console.log('in multipolygon', classifyPoint(d, [mouseX, mouseY]))
+        } else if (
+          country.geometry &&
+          country.geometry.type === 'MultiPolygon'
+        ) {
+          country.geometry.coordinates.forEach(d => {
+            if (classifyPoint(d[0], [mouseX, mouseY]) < 0) {
+              console.log('You guessed', country.properties.name)
+            }
           })
         }
       })
