@@ -29,7 +29,7 @@ svg
 let projection = d3.geoNaturalEarth1()
 let path = d3.geoPath().projection(projection)
 
-// This is a function that determines if a point is in a polygon
+// function that determines if a point is in a polygon
 var classifyPoint = require('robust-point-in-polygon')
 
 Promise.all([
@@ -77,7 +77,6 @@ function ready([datapoints, json]) {
     })
     .on('drag', function() {
       let [mouseX, mouseY] = d3.mouse(this)
-      console.log(mouseX, mouseY)
       d3.select(this)
         .style('cursor', 'none')
         .attr('x', mouseX)
