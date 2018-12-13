@@ -1,0 +1,146 @@
+Countries,OST,ARRA,LIAB,REG,MOON
+Afghanistan,R,NA,NA,NA,NA
+Algeria,R,NA,R,R,NA
+Antigua and Barbuda,R,R,R,R,NA
+Argentina,R,R,R,R,NA
+Armenia,NA,NA,NA,R,R
+Australia,R,R,R,R,R
+Austria,R,R,R,R,R
+Azerbaijan,R,NA,NA,NA,NA
+Bahamas,R,R,NA,NA,NA
+Bangladesh,R,NA,NA,NA,NA
+Barbados,R,R,NA,NA,NA
+Belarus,R,R,R,R,NA
+Belgium,R,R,R,R,R
+Benin,R,NA,R,NA,NA
+Bolivia,S,S,NA,NA,NA
+Bosnia and Herzegovina,NA,R,R,NA,NA
+Botswana,S,R,R,NA,NA
+Brazil,R,R,R,R,NA
+Bulgaria,R,R,R,R,NA
+Burkina Faso,R,NA,NA,NA,NA
+Burundi,S,NA,S,S,NA
+Cambodia,NA,NA,S,NA,NA
+Cameroon,S,R,NA,NA,NA
+Canada,R,R,R,R,NA
+Central African,S,NA,S,NA,NA
+Chile,R,R,R,R,R
+China,R,R,R,R,NA
+Colombia,S,S,R,R,NA
+Costa Rica,NA,S,S,R,NA
+Croatia,NA,R,R,NA,NA
+Cuba,R,R,R,R,NA
+Cyprus,R,R,R,R,NA
+Czech Republic,R,R,R,R,NA
+North Korea,R,R,R,R,NA
+Democratic Republic of the Congo,S,S,S,NA,NA
+Denmark,R,R,R,R,NA
+Dominican Republic,R,S,R,NA,NA
+Ecuador,R,R,R,NA,NA
+Egypt,R,R,S,NA,NA
+El Salvador,R,R,R,NA,NA
+Equatorial Guinea,R,NA,NA,NA,NA
+Estonia,R,NA,NA,NA,NA
+Ethiopia,S,NA,NA,NA,NA
+Fiji,R,R,R,NA,NA
+Finland,R,R,R,R,NA
+France,R,R,R,R,S
+Gabon,NA,R,R,NA,NA
+Gambia,S,R,S,NA,NA
+Georgia,NA,R,NA,NA,NA
+Germany,R,R,R,R,NA
+Ghana,S,S,S,NA,NA
+Greece,R,R,R,R,NA
+Guatemala,NA,NA,S,NA,S
+Guinea-Bissau,R,R,NA,NA,NA
+Guyana,S,R,NA,NA,NA
+Haiti,S,S,S,NA,NA
+Holy See,S,NA,NA,NA,NA
+Honduras,S,NA,S,NA,NA
+Hungary,R,R,R,R,NA
+Iceland,R,R,S,NA,NA
+India,R,R,R,R,S
+Indonesia,R,R,R,R,NA
+Iran,S,R,R,S,NA
+Iraq,R,R,R,NA,NA
+Ireland,R,R,R,NA,NA
+Israel,R,R,R,NA,NA
+Italy,R,R,R,R,NA
+Jamaica,R,S,NA,NA,NA
+Japan,R,R,R,R,NA
+Jordan,S,S,S,NA,NA
+Kazakhstan,R,R,R,R,R
+Kenya,R,NA,R,NA,NA
+Kuwait,R,R,R,R,R
+Lao People’s,R,R,R,NA,NA
+Lebanon,R,R,R,R,R
+Lesotho,S,S,NA,NA,NA
+Libya,R,R,R,R,NA
+Liechtenstein,NA,NA,R,R,NA
+Lithuania,R,R,R,R,NA
+Luxembourg,R,S,R,NA,NA
+Madagascar,R,R,NA,NA,NA
+Malaysia,S,S,NA,NA,NA
+Maldives,NA,R,NA,NA,NA
+Mali,R,NA,R,NA,NA
+Malta,R,S,R,NA,NA
+Mauritius,R,R,NA,NA,NA
+Mexico,R,R,R,R,R
+Monaco,NA,S,NA,NA,NA
+Mongolia,R,R,R,R,NA
+Montenegro,NA,R,R,R,NA
+Morocco,R,R,R,R,R
+Myanmar,R,S,NA,NA,NA
+Nepal,R,R,S,NA,NA
+Netherlands,R,R,R,R,R
+New Zealand,R,R,R,R,NA
+Nicaragua,R,R,R,R,NA
+Niger,R,R,R,R,NA
+Nigeria,R,R,R,R,NA
+Norway,R,R,R,R,NA
+Oman,NA,NA,S,NA,NA
+Pakistan,R,R,R,R,R
+Panama,S,NA,R,NA,NA
+Papua New Guinea,R,R,R,NA,NA
+Paraguay,R,NA,NA,NA,NA
+Peru,R,R,R,R,R
+Philippines,S,S,S,NA,R
+Poland,R,R,R,R,NA
+Portugal,R,R,NA,NA,NA
+Qatar,R,R,R,R,NA
+Romania,R,R,R,NA,S
+Rwanda,S,S,S,NA,NA
+Saint Vincent and the Grenadines,R,R,R,R,NA
+San Marino,R,R,NA,NA,NA
+Saudi Arabia,R,NA,R,R,R
+Senegal,NA,S,R,NA,NA
+Serbia,S,R,R,R,NA
+Seychelles,R,R,R,R,NA
+Sierra Leone,R,S,S,NA,NA
+Singapore,R,R,R,S,NA
+Slovakia,R,R,R,R,NA
+Slovenia,NA,R,R,NA,NA
+South Africa,R,R,R,R,NA
+Spain,R,R,R,R,NA
+Sri Lanka,R,NA,R,NA,NA
+Swaziland,NA,R,NA,NA,NA
+Sweden,R,R,R,R,NA
+Switzerland,R,R,R,R,NA
+Syrian Arab Republic,R,R,R,NA,NA
+Thailand,R,R,NA,NA,NA
+Togo,R,NA,R,NA,NA
+Tonga,R,R,NA,NA,NA
+Trinidad and Tobago,S,NA,R,NA,NA
+Tunisia,R,R,R,NA,NA
+Turkey,R,R,R,R,R
+Uganda,R,NA,NA,NA,NA
+Ukraine,R,R,R,R,NA
+United Arab Emirates,R,NA,R,R,NA
+United Kingdom,R,R,R,R,NA
+Egypt,NA,NA,S,NA,NA
+United States,R,R,R,R,NA
+Uruguay,R,R,R,R,R
+Venezuela,R,S,R,R,R
+Viet Nam,R,S,NA,NA,NA
+Yemen,R,S,NA,NA,NA
+Zambia,R,R,R,NA,NA
