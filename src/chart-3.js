@@ -62,8 +62,22 @@ function ready([datapoints, json]) {
     .append('text')
     .classed('satellite-guess', true)
     .text('🛰')
-    .attr('x', 20)
-    .attr('y', 20)
+    .attr('x', 100)
+    .attr('y', 55 + height / 2)
+    .attr('text-anchor', 'middle')
+
+  svg
+    .append('text')
+    .classed('instructions', true)
+    .text('Drag me to a country!')
+    .attr('x', 30)
+    .attr('y', height / 2)
+  svg
+    .append('text')
+    .classed('instructions-arrow', true)
+    .text('⬇️')
+    .attr('x', 100)
+    .attr('y', 30 + height / 2)
     .attr('text-anchor', 'middle')
 
   // add drag functionality to guessing satellite
@@ -87,13 +101,15 @@ function ready([datapoints, json]) {
       // turning pixel coords to lat long
       let [mouseX, mouseY] = projection.invert(d3.mouse(this))
 
+      var guess = 'hello'
       // iterating through each country
       countries.features.forEach(country => {
         // there are some weird nulls in the data
         if (country.geometry && country.geometry.type === 'Polygon') {
           country.geometry.coordinates.forEach(d => {
             if (classifyPoint(d, [mouseX, mouseY]) < 0) {
-              console.log('you guessed ', country.properties.name)
+              // console.log('you guessed ', country.properties.name)
+              guess = country.properties.name
             }
           })
         } else if (
@@ -102,11 +118,19 @@ function ready([datapoints, json]) {
         ) {
           country.geometry.coordinates.forEach(d => {
             if (classifyPoint(d[0], [mouseX, mouseY]) < 0) {
-              console.log('You guessed', country.properties.name)
+              // console.log('You guessed', country.properties.name)
+              guess = country.properties.name
             }
           })
         }
       })
+      console.log('did this work?', guess)
+      d3.select('#country-guess').text(guess)
+      if (guess === 'Ukraine') {
+        d3.select('#wrong-right').text('correct')
+      } else {
+        d3.select('#wrong-right').text('incorrect')
+      }
     })
   svg.select('.satellite-guess').call(drag)
 }
