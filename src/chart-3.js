@@ -131,6 +131,7 @@ function ready([datapoints, json]) {
       } else {
         d3.select('#wrong-right').text('incorrect')
       }
+      d3.select('#answer').style('display', 'block')
     })
   svg.select('.satellite-guess').call(drag)
 }
