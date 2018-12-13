@@ -42,7 +42,7 @@ Promise.all([
 function ready([datapoints, json]) {
   let countries = topojson.feature(json, json.objects.countries)
   projection.fitSize([width, height], countries)
-  // console.log(countries)
+  console.log(countries)
 
   // draw the countries
   svg
@@ -53,7 +53,10 @@ function ready([datapoints, json]) {
     .append('path')
     .attr('class', 'country')
     .attr('d', path)
-    .attr('fill', '#F5ECCE')
+    .attr('fill', d => {
+      console.log(d.geometry)
+      return '#F5ECCE'
+    })
     .attr('stroke', 'black')
     .attr('stroke-width', 0.1)
 

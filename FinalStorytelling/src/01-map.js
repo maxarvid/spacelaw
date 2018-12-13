@@ -27,12 +27,8 @@ let path = d3.geoPath().projection(projection)
 
 let colorScale = d3
   .scaleOrdinal()
-  .domain(['S','R' , 'NA'])
-  .range([
-    'blue',
-    'red',
-    'yellow',
-  ])
+  .domain(['S', 'R', 'NA'])
+  .range(['blue', 'red', 'yellow'])
 
 Promise.all([
   d3.json(require('./data/world.topojson')),
@@ -40,11 +36,23 @@ Promise.all([
 ])
   .then(ready)
   .catch(err => console.log('Failed on', err))
-  
+
 function ready([json, datapoints]) {
-  //console.log(json.objects)
   let countries = topojson.feature(json, json.objects.countries)
-  
+
+  let treatyCountries = datapoints.map(d => d.Countries)
+  let moonCountries = datapoints.map(d => {
+    if (d.MOON === 'R' || d.MOON === 'S') {
+      return d.Countries
+    }
+  })
+
+  moonCountries = moonCountries.filter(Boolean)
+
+  console.log(moonCountries)
+  // console.log(countries.features.map(d => d.geometry))
+  // console.log(treatyCountries)
+
   svg
     .selectAll('.country')
     .data(countries.features) // always going to be .features (list inside geojson)
@@ -52,19 +60,26 @@ function ready([json, datapoints]) {
     .append('path')
     .attr('class', 'country')
     .attr('d', path)
-    .attr('fill', d=>{
+    .attr('fill', d => {
       // console.log(d.properties.name)
       var country = d.properties.name
-      console.log(datapoints.country)
+      if (moonCountries.indexOf(country) >= 0) {
+        return 'green'
+      } else if (treatyCountries.indexOf(country) >= 0) {
+        return 'blue'
+      } else {
+        return 'grey'
+      }
+      // console.log(datapoints.country)
     })
 
-// svg
-//    .selectAll('.country')
-//    .data(datapoints)
-//    .attr('fill', d => {
-//      console.log(d)
-//      return colorScale(d.ARRA)
-//    })
+  // svg
+  //    .selectAll('.country')
+  //    .data(datapoints)
+  //    .attr('fill', d => {
+  //      console.log(d)
+  //      return colorScale(d.ARRA)
+  //    })
   svg // adding long lat lines to map
     .append('path')
     .datum(graticule())
