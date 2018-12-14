@@ -47,32 +47,47 @@ function ready([json, datapoints]) {
     }
   })
 
+  let moonCountriesR = datapoints.map(d => {
+    if (d.MOON === 'R') {
+      return d.Countries
+    }
+  })
+
+  let moonCountriesS = datapoints.map(d => {
+    if (d.MOON === 'S') {
+      return d.Countries
+    }
+  })
+
+
   moonCountries = moonCountries.filter(Boolean)
 
   console.log(moonCountries)
   // console.log(countries.features.map(d => d.geometry))
   // console.log(treatyCountries)
 
-  svg
-    .selectAll('.country')
-    .data(countries.features) // always going to be .features (list inside geojson)
-    .enter()
-    .append('path')
-    .attr('class', 'country')
-    .attr('d', path)
-    .attr('fill', d => {
-      // console.log(d.properties.name)
-      var country = d.properties.name
-      if (moonCountries.indexOf(country) >= 0) {
-        return 'green'
-      } else if (treatyCountries.indexOf(country) >= 0) {
-        return 'blue'
-      } else {
-        return 'grey'
-      }
-      // console.log(datapoints.country)
-    })
 
+  d3.select('#step-one').on('stepin', () => {
+    svg
+      .selectAll('.country')
+      .data(countries.features) // always going to be .features (list inside geojson)
+      .enter()
+      .append('path')
+      .attr('class', 'country')
+      .attr('d', path)
+      .attr('fill', d => {
+        // console.log(d.properties.name)
+        var country = d.properties.name
+        if (moonCountriesR.indexOf(country) >= 0) {
+          return 'blue'
+        } else if (moonCountriesS.indexOf(country) >= 0) {
+          return 'yellow'
+        } else {
+          return 'grey'
+        }
+        // console.log(datapoints.country)
+      })
+  })
   // svg
   //    .selectAll('.country')
   //    .data(datapoints)
