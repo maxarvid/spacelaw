@@ -140,7 +140,6 @@ function ready([json, datapoints]) {
     .lower()
 
   d3.select('#intro-map').on('stepin', () => {
-    console.log('step 1 triggered!')
     svg.selectAll('.country').attr('fill', d => {
       var country = d.properties.name
       if (outerSpaceR.indexOf(country) >= 0) {
@@ -150,14 +149,11 @@ function ready([json, datapoints]) {
       } else {
         return 'grey'
       }
-      // console.log(datapoints.country)
     })
   })
 
   d3.select('#step-two').on('stepin', () => {
-    console.log('step 2 triggered')
     svg.selectAll('.country').attr('fill', d => {
-      // console.log(d.properties.name)
       var country = d.properties.name
       if (rescueAgreementR.indexOf(country) >= 0) {
         return 'blue'
@@ -166,66 +162,59 @@ function ready([json, datapoints]) {
       } else {
         return 'grey'
       }
+    })
+  })
+
+  d3.select('#step-three').on('stepin', () => {
+    console.log('step 3 triggered')
+    svg.selectAll('.country').attr('fill', d => {
+      var country = d.properties.name
+      if (liabilityConventionR.indexOf(country) >= 0) {
+        return 'blue'
+      } else if (liabilityConventionS.indexOf(country) >= 0) {
+        return 'yellow'
+      } else {
+        return 'grey'
+      }
+    })
+  })
+
+  d3.select('#step-four').on('stepin', () => {
+    console.log('step 4 triggered')
+    svg.selectAll('.country').attr('fill', d => {
+      // console.log(d.properties.name)
+      var country = d.properties.name
+      if (registrationConventionR.indexOf(country) >= 0) {
+        return 'blue'
+      } else if (registrationConventionS.indexOf(country) >= 0) {
+        return 'yellow'
+      } else {
+        return 'grey'
+      }
       // console.log(datapoints.country)
     })
   })
 
-  // d3.select('#step-three').on('stepin', () => {
-  //   console.log('step 3 triggered')
-  //   svg
-  //     .selectAll('.country')
-  //     .attr('fill', d => {
-  //       // console.log(d.properties.name)
-  //       var country = d.properties.name
-  //       if (liabilityConventionR.indexOf(country) >= 0) {
-  //         return 'blue'
-  //       } else if (liabilityConventionS.indexOf(country) >= 0) {
-  //         return 'yellow'
-  //       } else {
-  //         return 'grey'
-  //       }
-  //       // console.log(datapoints.country)
-  //     })
-  // })
-
-  // d3.select('#step-four').on('stepin', () => {
-  //   console.log('step 4 triggered')
-  //   svg
-  //     .selectAll('.country')
-  //     .attr('fill', d => {
-  //       // console.log(d.properties.name)
-  //       var country = d.properties.name
-  //       if (registrationConventionR.indexOf(country) >= 0) {
-  //         return 'blue'
-  //       } else if (registrationConventionS.indexOf(country) >= 0) {
-  //         return 'yellow'
-  //       } else {
-  //         return 'grey'
-  //       }
-  //       // console.log(datapoints.country)
-  //     })
-  // })
-
-  // d3.select('#step-five').on('stepin', () => {
-  //   console.log('step 5 triggered')
-  //   svg
-  //     .selectAll('.country')
-  //     .data(countries.features) // always going to be .features (list inside geojson)
-  //     .enter()
-  //     .append('path')
-  //     .attr('class', 'country')
-  //     .attr('d', path)
-  //     .attr('fill', d => {
-  //       // console.log(d.properties.name)
-  //       var country = d.properties.name
-  //       if (moonCountriesR.indexOf(country) >= 0) {
-  //         return 'blue'
-  //       } else if (moonCountriesS.indexOf(country) >= 0) {
-  //         return 'yellow'
-  //       } else {
-  //         return 'grey'
-  //       }
-  //       // console.log(datapoints.country)
-  //     })
-  // })
+  d3.select('#step-five').on('stepin', () => {
+    console.log('step 5 triggered')
+    svg
+      .selectAll('.country')
+      .data(countries.features) // always going to be .features (list inside geojson)
+      .enter()
+      .append('path')
+      .attr('class', 'country')
+      .attr('d', path)
+      .attr('fill', d => {
+        // console.log(d.properties.name)
+        var country = d.properties.name
+        if (moonCountriesR.indexOf(country) >= 0) {
+          return 'blue'
+        } else if (moonCountriesS.indexOf(country) >= 0) {
+          return 'yellow'
+        } else {
+          return 'grey'
+        }
+        // console.log(datapoints.country)
+      })
+  })
 }
