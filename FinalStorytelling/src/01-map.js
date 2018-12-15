@@ -40,6 +40,7 @@ Promise.all([
 function ready([json, datapoints]) {
   let countries = topojson.feature(json, json.objects.countries)
 
+// making variables for everything
   let treatyCountries = datapoints.map(d => d.Countries)
   let moonCountries = datapoints.map(d => {
     if (d.MOON === 'R' || d.MOON === 'S') {
@@ -47,6 +48,7 @@ function ready([json, datapoints]) {
     }
   })
 
+// MOON TREATY
   let moonCountriesR = datapoints.map(d => {
     if (d.MOON === 'R') {
       return d.Countries
@@ -61,6 +63,66 @@ function ready([json, datapoints]) {
 
 
   moonCountries = moonCountries.filter(Boolean)
+
+// OUTERSPACE TREATY 
+  let outerSpaceR = datapoints.map(d => {
+    if (d.OST === 'R') {
+      return d.Countries
+    }
+  })
+
+  let outerSpaceS = datapoints.map(d => {
+    if (d.OST === 'S') {
+      return d.Countries
+    }
+  })
+
+// Rescue Agreement 
+
+  let rescueAgreementR = datapoints.map(d => {
+    if (d.ARRA === 'R') {
+      return d.Countries
+    }
+  })
+
+  let rescueAgreementS = datapoints.map(d => {
+    if (d.ARRA === 'S') {
+      return d.Countries
+    }
+  })
+
+// Liability Convention
+
+  let liabilityConventionR = datapoints.map(d => {
+    if (d.LIAB === 'R') {
+      return d.Countries
+    }
+  })
+
+  let liabilityConventionS = datapoints.map(d => {
+    if (d.LIAB === 'S') {
+      return d.Countries
+    }
+  })
+
+
+// Registration Convention
+
+
+
+  let registrationConventionR = datapoints.map(d => {
+    if (d.REG === 'R') {
+      return d.Countries
+    }
+  })
+
+  let registrationConventionS = datapoints.map(d => {
+    if (d.REG === 'S') {
+      return d.Countries
+    }
+  })
+
+
 
   console.log(moonCountries)
   // console.log(countries.features.map(d => d.geometry))
