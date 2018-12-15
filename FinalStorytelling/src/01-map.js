@@ -48,6 +48,8 @@ function ready([json, datapoints]) {
     }
   })
 
+// in all cases S is for Signature R is for Ratified NA is for didn't sign / not a party
+
 // MOON TREATY
   let moonCountriesR = datapoints.map(d => {
     if (d.MOON === 'R') {
@@ -128,8 +130,107 @@ function ready([json, datapoints]) {
   // console.log(countries.features.map(d => d.geometry))
   // console.log(treatyCountries)
 
+// start making scrollytelling steps
 
   d3.select('#step-one').on('stepin', () => {
+    svg
+      .selectAll('.country')
+      .data(countries.features) // always going to be .features (list inside geojson)
+      .enter()
+      .append('path')
+      .attr('class', 'country')
+      .attr('d', path)
+      .attr('fill', d => {
+        // console.log(d.properties.name)
+        var country = d.properties.name
+        if (outerspaceR.indexOf(country) >= 0) {
+          return 'blue'
+        } else if (outerspaceS.indexOf(country) >= 0) {
+          return 'yellow'
+        } else {
+          return 'grey'
+        }
+        // console.log(datapoints.country)
+      })
+  })
+  // svg
+  //    .selectAll('.country')
+  //    .data(datapoints)
+  //    .attr('fill', d => {
+  //      console.log(d)
+  //      return colorScale(d.ARRA)
+  //    })
+  
+  d3.select('#step-two').on('stepin', () => {
+    svg
+      .selectAll('.country')
+      .data(countries.features) // always going to be .features (list inside geojson)
+      .enter()
+      .append('path')
+      .attr('class', 'country')
+      .attr('d', path)
+      .attr('fill', d => {
+        // console.log(d.properties.name)
+        var country = d.properties.name
+        if (rescueAgreementR.indexOf(country) >= 0) {
+          return 'blue'
+        } else if (rescueAgreementS.indexOf(country) >= 0) {
+          return 'yellow'
+        } else {
+          return 'grey'
+        }
+        // console.log(datapoints.country)
+      })
+  })
+
+
+  d3.select('#step-three').on('stepin', () => {
+    svg
+      .selectAll('.country')
+      .data(countries.features) // always going to be .features (list inside geojson)
+      .enter()
+      .append('path')
+      .attr('class', 'country')
+      .attr('d', path)
+      .attr('fill', d => {
+        // console.log(d.properties.name)
+        var country = d.properties.name
+        if (liabilityConventionR.indexOf(country) >= 0) {
+          return 'blue'
+        } else if (liabilityConventionS.indexOf(country) >= 0) {
+          return 'yellow'
+        } else {
+          return 'grey'
+        }
+        // console.log(datapoints.country)
+      })
+  })
+
+  d3.select('#step-four').on('stepin', () => {
+    svg
+      .selectAll('.country')
+      .data(countries.features) // always going to be .features (list inside geojson)
+      .enter()
+      .append('path')
+      .attr('class', 'country')
+      .attr('d', path)
+      .attr('fill', d => {
+        // console.log(d.properties.name)
+        var country = d.properties.name
+        if (registrationConventionR.indexOf(country) >= 0) {
+          return 'blue'
+        } else if (registrationConventionS.indexOf(country) >= 0) {
+          return 'yellow'
+        } else {
+          return 'grey'
+        }
+        // console.log(datapoints.country)
+      })
+  })
+
+
+
+  d3.select('#step-five').on('stepin', () => {
     svg
       .selectAll('.country')
       .data(countries.features) // always going to be .features (list inside geojson)
@@ -150,13 +251,15 @@ function ready([json, datapoints]) {
         // console.log(datapoints.country)
       })
   })
-  // svg
-  //    .selectAll('.country')
-  //    .data(datapoints)
-  //    .attr('fill', d => {
-  //      console.log(d)
-  //      return colorScale(d.ARRA)
-  //    })
+
+
+
+
+
+
+
+
+
   svg // adding long lat lines to map
     .append('path')
     .datum(graticule())
