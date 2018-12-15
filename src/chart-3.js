@@ -42,7 +42,7 @@ Promise.all([
 function ready([datapoints, json]) {
   let countries = topojson.feature(json, json.objects.countries)
   projection.fitSize([width, height], countries)
-  console.log(countries)
+  // console.log(countries)
 
   // draw the countries
   svg
@@ -54,7 +54,7 @@ function ready([datapoints, json]) {
     .attr('class', 'country')
     .attr('d', path)
     .attr('fill', d => {
-      console.log(d.geometry)
+      // console.log(d.geometry)
       return '#F5ECCE'
     })
     .attr('stroke', 'black')
@@ -127,7 +127,7 @@ function ready([datapoints, json]) {
           })
         }
       })
-      console.log('did this work?', guess)
+      // console.log('did this work?', guess)
       d3.select('#country-guess').text(guess)
       if (guess === 'Ukraine') {
         d3.select('#wrong-right').text('correct')

@@ -28,6 +28,12 @@
         max-width: 46rem;
       }
 
+      .sticky {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+      }
+
       img.block {
         display: block;
         border: solid #333 1p;
@@ -38,34 +44,97 @@
         stroke-width: 0.5;
         stroke: #999;
       }
+
+/*      .hero-image {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("images/mira.jpg");
+        height: 50%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+      }
+
+      .hero-text {
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+      }*/
+
+      /* Set the sticky things 2% from the top */
+      .sticky {
+        top: 2vh;
+        align-self: flex-start;  
+      }
+
+      /* Minimum height of 70% of the screen */
+      .step {
+        min-height: 70vh;
+      }
+
+      .step > p {
+        background: rgba(255,255,255,0.9);
+        padding: 10px 0;
+        margin-bottom: 0;
+        padding-bottom: 1rem;
+      }
+
+      .step > ul, .step > h2, .step > h3 {
+        background: rgba(255,255,255,0.9);
+      }
     </style>
   </head>
 </head>
 <body>
 <div class="container">
+  <!-- <div class="hero-image">
+    <div class="hero-text">
+      <h1>Our title goes here</h1>
+      <p>yo why is this not working?</p>
+    </div>
+  </div> -->
+
+
+
   <div class="row">
     <div class="col-12">
       <h1>🛰⚖️Space Law Placeholder⚖️🛰</h1>
     </div>
   </div>
-  <div class="col-lg-8">
-    <div id="chart-1">
-      <button type="button" class="btn btn-light" id="chart-1-click">Take 🛰 for a spin</button>
-    </div>
-    
-  </div>
-  
-  <div class="col-lg-8">
-    <div id="chart-2"></div>
-  </div>
 
-  <div class="col-9">
+  <div class="col-10">
     <div id="chart-3"></div>
-    <div id="answer" class="col-3 mt-4" style="display: none">
+    <div id="answer" class="col-8 mt-4" style="display: none">
       <p> You've guessed <strong id="country-guess"></strong><br>
       That's the <strong id="wrong-right"></strong> answer.</p>
     </div>
   </div>
+
+  <div class="col-lg-8">
+    <div id="chart-2"></div>
+  </div>
+
+
+  <div class="row mt-5 mb-5">
+    <div class="col-lg-8 sticky">   
+        <div id="map-01"></div>
+    </div>
+    <div class="col-lg-8">    
+        <div class="step" id="intro-map"><h3>Outer Space Treaty</h3>
+          <p>The Outer Space Treaty, or the “Treaty on Principles Governing the Activities of States in the Exploration and Use of Outer Space, including the Moon and Other Celestial Bodies,” as it is fully known, was signed on October 10 1967.<br>
+          It is largely seen as the backbone for all international space law: establishing the moon as the common heritage of mankind; that no weapons of mass destruction could be launched into orbit; that countries must avoid harmfully contaminating celestial bodies and countries must ensure space material they bring back does not contaminate earth; and nations should be held accountable for their actions in space.<br>
+          105 countries have ratified the treaty and 23 others are signatories. Yet, as private companies look towards mining opportunities on the moon and other celestial bodies, law experts have begun debating the interpretation of this treaty—the treaty says no “nation” may appropriate the moon or other celestial bodies, nobody said anything about private companies. </p></div>
+        <div class="step" id="step-two">Step 2</div>
+        <!-- <div class="step" id="step-three">Step 3</div>
+        <div class="step" id="step-four">Step 4</div>
+        <div class="step" id="step-five">Step 5</div> -->
+    </div>  
+  </div>
+
+
+
 
 
   <div class="row justify-content-center"><!-- headline and intro -->
@@ -77,10 +146,23 @@
       </div>
 
 
+  <div class="step" id="test-step">
+    <p>Is this thing on?</p>
+  </div>
+
+  <div class="col-lg-8">
+    <div id="satellite-spin">
+      <button type="button" class="btn btn-light" id="chart-1-click">Take 🛰 for a spin</button>
+    </div>
+    
+  </div>
+
   <!-- Now we include our actual visualization -->
-  <script src="chart-1.js"></script>
+  <script src="satellite-spin.js"></script>
   <script src="chart-2.js"></script>
   <script src="chart-3.js"></script>
+  <script src="map-01.js"></script>
+  <script src="scrollytelling.js"></script>
 </div>
 </body>
 </html>

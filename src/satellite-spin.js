@@ -7,7 +7,7 @@ let height = 600 - margin.top - margin.bottom
 let width = 600 - margin.left - margin.right
 
 let svg = d3
-  .select('#chart-1')
+  .select('#satellite-spin')
   .append('svg')
   .attr('height', height + margin.top + margin.bottom)
   .attr('width', width + margin.left + margin.right)

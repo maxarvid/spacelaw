@@ -6,7 +6,7 @@ let height = 600 - margin.top - margin.bottom
 let width = 600 - margin.left - margin.right
 
 let svg = d3
-  .select('#chart-1')
+  .select('#chart-2')
   .append('svg')
   .attr('height', height + margin.top + margin.bottom)
   .attr('width', width + margin.left + margin.right)
@@ -25,7 +25,7 @@ d3.csv(require('./data/national_law_count.csv'))
   .catch(err => console.log('Failed on', err))
 
 function ready(datapoints) {
-  console.log('data is', datapoints)
+  // console.log('data is', datapoints)
 
   let lawList = datapoints.map(d => +d.count)
   xPositionScale.domain([0, d3.max(lawList)])
