@@ -139,10 +139,6 @@ function ready([json, datapoints]) {
     .attr('fill', 'none')
     .lower()
 
-  d3.select('#test-step').on('stepin', () => {
-    console.log('you are not crazy. yet.')
-  })
-
   d3.select('#intro-map').on('stepin', () => {
     console.log('step 1 triggered!')
     svg.selectAll('.country').attr('fill', d => {
