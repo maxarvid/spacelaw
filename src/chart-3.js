@@ -8,8 +8,8 @@ let margin = {
   left: 0
 }
 
-let width = 700 - margin.left - margin.right
-let height = 400 - margin.top - margin.bottom
+let width = 900 - margin.left - margin.right
+let height = 500 - margin.top - margin.bottom
 
 let svg = d3
   .select('#chart-3')
@@ -104,7 +104,7 @@ function ready([datapoints, json]) {
       // turning pixel coords to lat long
       let [mouseX, mouseY] = projection.invert(d3.mouse(this))
 
-      var guess = 'hello'
+      var guess = 'No country there!'
       // iterating through each country
       countries.features.forEach(country => {
         // there are some weird nulls in the data
@@ -131,10 +131,19 @@ function ready([datapoints, json]) {
       d3.select('#country-guess').text(guess)
       if (guess === 'Ukraine') {
         d3.select('#wrong-right').text('correct')
+        d3.select('#give-up').text('See who else has national space laws')
       } else {
         d3.select('#wrong-right').text('incorrect')
       }
       d3.select('#answer').style('display', 'block')
     })
+
+  d3.select('#give-up').on('click', () => {
+    d3.select('#chart-2')
+      .transition()
+      .duration(500)
+      .style('display', 'block')
+  })
+
   svg.select('.satellite-guess').call(drag)
 }

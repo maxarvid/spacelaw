@@ -100,20 +100,31 @@
 
   <div class="row">
     <div class="col-12">
-      <h1>🛰⚖️Space Law Placeholder⚖️🛰</h1>
+      <h1>🛰⚖️Space Law⚖️🛰</h1>
     </div>
   </div>
 
-  <div class="col-10">
+  <div class="row mt-5 mb-5">
+    <div class="col-10">
+      <p>Have you ever peered out into the infinite night sky and asked yourself; gee, I wonder how law works in outer space? Of course you have. Space law is real, and it comes mostly from, drumroll, nation states on Earth. There are a number of international treaties that govern outer space, and countries also pass national laws on proper outer space conduct.<br>
+      Before we delve into the international treaties, can you guess what countries have the most <b>national space laws</b>? Grab the satellite and drop it on the country you think has the most laws!</p>
+    </div>
+  </div>
+
+
+  <div class="col-12 justify-content-center">
     <div id="chart-3"></div>
     <div id="answer" class="col-8 mt-4" style="display: none">
-      <p> You've guessed <strong id="country-guess"></strong><br>
-      That's the <strong id="wrong-right"></strong> answer.</p>
+      <div class="row">
+        <p> You've guessed <strong id="country-guess"></strong><br>
+        That's the <strong id="wrong-right"></strong> answer.</p>
+        <button id="give-up" class="btn btn-light">I give up!</button>
+      </div>
     </div>
   </div>
 
   <div class="col-lg-8">
-    <div id="chart-2"></div>
+    <div id="chart-2" style="display: none"></div>
   </div>
 
 
@@ -143,10 +154,6 @@
         </div>
     </div>  
   </div>
-
-
-
-
 
   <div class="row justify-content-center"><!-- headline and intro -->
             <div class="col-lg-10 ">
