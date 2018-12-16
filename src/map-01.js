@@ -20,7 +20,7 @@ let graticule = d3.geoGraticule()
 let path = d3.geoPath().projection(projection)
 
 var legendColor = ['blue', 'yellow', 'grey']
-var legendText = ['Signed', 'Ratified', 'Not interested']
+var legendText = ['Ratified', 'Signed', 'Not interested']
 
 Promise.all([
   d3.json(require('./data/world.topojson')),
