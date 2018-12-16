@@ -49,6 +49,7 @@ function ready(datapoints) {
   // add title
   svg
     .append('text')
+    .attr('class', 'titleText')
     .text('number of national space laws on the books')
     .attr('x', width / 2)
     .attr('y', 0)
@@ -57,16 +58,61 @@ function ready(datapoints) {
     .attr('font-size', '20')
 
   // axes
-  const xAxis = d3.axisBottom(xPositionScale)
+  var xAxis = d3
+    .axisBottom(xPositionScale)
+    .tickValues([1, 2, 3, 4, 5, 6, 7, 8])
+    .tickSize(-height)
+
   svg
     .append('g')
     .attr('class', 'axis x-axis')
     .attr('transform', `translate(0, ${height})`)
     .call(xAxis)
 
-  const yAxis = d3.axisLeft(yPositionScale)
+  var yAxis = d3.axisLeft(yPositionScale)
   svg
     .append('g')
     .attr('class', 'axis y-axis')
     .call(yAxis)
+
+  function render() {
+    // console.log('screen resized.')
+    let screenWidth = svg.node().parentNode.parentNode.offsetWidth
+    let screenHeight = window.innerHeight
+    let newWidth = screenWidth - margin.left - margin.right
+    let newHeight = screenHeight - margin.top - margin.bottom
+
+    // Update SVG
+    let actualSvg = d3.select(svg.node().parentNode)
+    actualSvg
+      .attr('height', newHeight + margin.top + margin.bottom)
+      .attr('width', newWidth + margin.left + margin.right)
+
+    xPositionScale.range([0, newWidth])
+    yPositionScale.range([0, newHeight])
+
+    svg
+      .selectAll('.bars')
+      .attr('y', d => yPositionScale(d.country))
+      .attr('width', d => xPositionScale(d.count))
+      .attr('height', yPositionScale.bandwidth())
+
+    if (newHeight < 400) {
+      svg.selectAll('text').attr('font-size', 12)
+    }
+
+    svg.selectAll('.titleText').attr('x', newWidth / 2)
+
+    xAxis.tickSize(-newHeight)
+
+    svg
+      .select('.x-axis')
+      .attr('transform', `translate(0, ${newHeight})`)
+      .call(xAxis)
+    svg.select('.y-axis').call(yAxis)
+  }
+
+  // Every time the window resizes, run the render function
+  window.addEventListener('resize', render)
+  // render()
 }
